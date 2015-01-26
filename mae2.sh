@@ -1,0 +1,3 @@
+aws --profile cs2931user emr create-cluster --ami-version 3.3.0 --auto-terminate  --application Name=Hive --name="EMR Hive Grouping Test (137686)" --log-uri s3://137686-cs2931user-cs2931test/logs \
+--instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=m1.medium InstanceGroupType=CORE,InstanceCount=2,InstanceType=m1.medium \
+--steps Type=Hive,Name="EMR Hive Grouping (137686) Test",ActionOnFailure=TERMINATE_CLUSTER,Args=[-f,s3://137686-cs2931user-cs2931test/scripts/grouptest.q,-d,INPUT=s3://elasticmapreduce/samples/hive-ads/tables,-d,OUTPUT=s3://137686-cs2931user-cs2931test/hive/output/2015-01-06,-d,LIBS=s3://137686-cs2931user-cs2931test/scripts]
